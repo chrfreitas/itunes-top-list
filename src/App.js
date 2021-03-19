@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import * as Sentry from '@sentry/react';
 import { Integrations } from "@sentry/tracing";
 
-import Menu from './components/Menu/Menu';
-import TopAlbums from './pages/TopAlbums/TopAlbums';
-import TopSongs from './pages/TopSongs/TopSongs';
+import Menu from './components/menu/menu';
+import TopAlbums from './views/top-albums/top-albums';
+import TopSongs from './views/top-songs/top-songs';
 import routes from './routes/routes';
 
 Sentry.init({

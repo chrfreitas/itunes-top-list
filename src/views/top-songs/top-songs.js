@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import iTunesAPI from "../../api/itunes";
+import iTunesAPI from "../../services/api/itunes";
 
-import "./TopSongs.css";
+import "./top-songs.css";
 
 function TopSongs() {
   const [songs, setSongs] = useState([]);
