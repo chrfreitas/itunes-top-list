@@ -12,8 +12,6 @@ jobs:
 
       - name: Cache node modules
         uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
         with:
           path: ~/node_modules
           key: node_modules-${{ hashFiles('**/package-lock.json') }}
@@ -28,6 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Integration tests
+        uses: actions/cache@v2
         run: npm test
       
     
