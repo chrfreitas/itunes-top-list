@@ -1,4 +1,4 @@
-name: Super-Linter
+name: ITunes Top List Build
 
 on: push
 
@@ -12,12 +12,14 @@ jobs:
 
   install:
     name: Install
+    runs-on: ubuntu-latest
     steps:
       - run: npm install
 
 
   test:
     name: Integration Test
+    runs-on: ubuntu-latest
     steps:
       - run: npm test
 
