@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Cache node modules
+      - name: Cache dependencies
         uses: actions/cache@v2
         with:
           path: ~/node_modules
@@ -22,11 +22,17 @@ jobs:
 
   test:
     name: Test
-    needs: setup
     runs-on: ubuntu-latest
+    needs: setup
     steps:
-      - name: Integration tests
+      - name: Cache dependencies
         uses: actions/cache@v2
+        with:
+          path: ~/node_modules
+          key: node_modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: node_modules-
+            
+      - name: Integration tests
         run: npm test
       
     
