@@ -1,10 +1,13 @@
-name: ITunes Top List CI
+name: Pull Request QA
 
-on: push
+on:
+  pull_request:
+    branches:
+      - master
 
 jobs:
   pull-request:
-    name: Setup
+    name: Pull Request
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
