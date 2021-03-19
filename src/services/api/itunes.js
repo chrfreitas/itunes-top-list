@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const BASE_URL = 'https://itunes.apple.com/us/rss';
+const BASE_URL = process.env.REACT_APP_ITUNES_API;
 const CACHE = [];
 
 const iTunesAPI = {
-    getAlgums: async (limit = 100) => {
+    getAlbums: async (limit = 100) => {
         const url = `${BASE_URL}/topalbums/limit=${limit}/json`;
         if(CACHE[url]) {
             return CACHE[url];

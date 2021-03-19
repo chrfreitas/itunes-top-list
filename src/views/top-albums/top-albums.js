@@ -8,9 +8,13 @@ import "./top-albums.css";
 function TopAlbums() {
   const [albums, setAlbums] = useState([]);
 
-  useEffect(async () => {
-    const albums = await iTunesAPI.getAlgums();
+  useEffect(() => {
+  async function renderAlbums() {
+    const albums = await iTunesAPI.getAlbums();
     setAlbums(albums);
+  }
+
+  renderAlbums();
   }, [])
 
   return (
@@ -19,7 +23,7 @@ function TopAlbums() {
       <div className="top-albums__list">
         {albums.map(album => 
           <div key={album.id.attributes['im:id']}>
-            <img className="top-albums__cover" src={album['im:image'][2].label} />
+            <img className="top-albums__cover" src={album['im:image'][2].label} alt="Album Cover" />
             <div className="top-albums__name">{album['im:name'].label}</div>
             <div className="top-albums__author">{album['im:artist'].label}</div>
           </div>)}
