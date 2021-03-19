@@ -23,9 +23,10 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
-      uses: actions/download-artifact@v2
-        with:
-          name: node_modules
+      - name: Get dependencies
+        uses: actions/download-artifact@v2
+          with:
+            name: node_modules
 
       - name: Integration tests
         run: npm test
