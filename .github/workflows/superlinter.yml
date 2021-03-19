@@ -3,7 +3,7 @@ name: Super-Linter
 on: push
 
 jobs:
-  super-lint:
+  checkout:
     name: Checkout
     runs-on: ubuntu-latest
     steps:
@@ -12,12 +12,14 @@ jobs:
 
   install:
     name: Install
-    run: npm install
+    steps:
+      - run: npm install
 
 
   test:
     name: Integration Test
-    run: npm test
+    steps:
+      - run: npm test
 
     
       
