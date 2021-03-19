@@ -12,22 +12,12 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        uses: actions/upload-artifact@v2
-        with:
-          name: node_modules
-          path: node_modules
-
 
   test:
     name: Test
     needs: setup
     runs-on: ubuntu-latest
     steps:
-      - name: Download dependencies
-        uses: actions/download-artifact@v2
-        with:
-          name: node_modules
-
       - name: Integration tests
         run: npm test
       
