@@ -3,8 +3,8 @@ name: ITunes Top List Build
 on: push
 
 jobs:
-  build:
-    name: Build
+  setup:
+    name: Setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -13,6 +13,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+  test:
+    name: Test
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
       - name: Integration tests
         run: npm test
+      
     
