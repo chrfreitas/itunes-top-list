@@ -15,6 +15,7 @@ Sentry.init({
 });
 
 export const App = () => (
+    
     <Router>
         <React.StrictMode>
             <Menu />
@@ -32,3 +33,4 @@ export const App = () => (
         </React.StrictMode>
     </Router>
 )
+
