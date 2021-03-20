@@ -14,7 +14,12 @@ test('renders Top Album page as default', () => {
         <Router history={history}>
             <App />
         </Router>
-    );    
+    );
+
+    let route = routes.topAlbums;
+    if (process.env.NODE_ENV === 'production') {
+        route = process.env.REACT_APP_BASE_PATH + routes.topAlbums;
+    }
 
     expect(location.pathname).toBe(routes.topAlbums)
 });
@@ -37,8 +42,8 @@ test('navigates to Top Songs', () => {
         <Router history={history}>
             <App />
         </Router>
-    );  
-    
+    );
+
     const topSongsButton = screen.getByText(/Top 100 Songs/i);
     fireEvent.click(topSongsButton);
 
@@ -52,7 +57,7 @@ test('navigates to Top Songs and go back to Top Albums', () => {
         <Router history={history}>
             <App />
         </Router>
-    ); 
+    );
 
     const topSongsButton = screen.getByText(/Top 100 Songs/i);
     fireEvent.click(topSongsButton);
