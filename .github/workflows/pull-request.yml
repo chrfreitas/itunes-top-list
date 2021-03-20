@@ -6,22 +6,39 @@ on:
       - master
 
 jobs:
-  pull-request:
-    name: Pull Request
+  setup:
+    name: setup 🛠
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: install dependencies
+        run: npm install
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: node_modules-
+
+  test:
+    name: test 🧪
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: checkout
         uses: actions/checkout@v2
 
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: ~/node_modules
+          path: node_modules
           key: node_modules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: node_modules-
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Integration tests
         run: npm test
+
+  

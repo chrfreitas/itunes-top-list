@@ -6,22 +6,55 @@ on:
       - master
 
 jobs:
-  build:
-    name: Build
+  setup:
+    name: setup 🛠
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: install dependencies
+        run: npm install
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: node_modules-
+
+  test:
+    name: test 🧪
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: checkout
         uses: actions/checkout@v2
 
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: ~/node_modules
+          path: node_modules
           key: node_modules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: node_modules-
 
-      - name: Install dependencies
-        run: npm install
+      - name: Integration tests
+        run: npm test
+
+  build:
+    name: build ⚙️
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: node_modules-
 
       - name: Set environment variables
         run: |
@@ -30,11 +63,30 @@ jobs:
           echo REACT_APP_ITUNES_API =${{ secrets.REACT_APP_ITUNES_API }} >> .env
           echo REACT_APP_SENTRY_URL =${{ secrets.REACT_APP_SENTRY_URL }} >> .env
 
-      - name: Integration tests
-        run: npm test
-
       - name: Building
         run: npm run build
+
+      - name: Cache build
+        uses: actions/cache@v2
+        with:
+          path: build
+          key: build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: build-
+
+  deploy:
+    name: deploy 🚀
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Cache build
+        uses: actions/cache@v2
+        with:
+          path: build
+          key: build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: build-
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.0
