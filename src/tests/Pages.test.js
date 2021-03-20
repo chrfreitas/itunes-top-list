@@ -21,7 +21,7 @@ test('renders Top Album page as default', () => {
         route = process.env.REACT_APP_BASE_PATH + routes.topAlbums;
     }
 
-    expect(location.pathname).toBe(routes.topAlbums)
+    expect(location.pathname).toBe(route)
 });
 
 test('renders menu with two links to switch between Top Songs and Top Albums', () => {
