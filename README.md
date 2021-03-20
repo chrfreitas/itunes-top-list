@@ -1,7 +1,6 @@
 # Getting Started
 
 This project is using [Create React App](https://github.com/facebook/create-react-app).
-Demo: https://chrfreitas.github.io/itunes-top-list/
 
 ## Available Scripts
 
@@ -29,4 +28,8 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+
+### Demo
+https://chrfreitas.github.io/itunes-top-list/
 
