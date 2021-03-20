@@ -25,7 +25,7 @@ jobs:
 
       - name: Set environment variables
         run: |
-          touch .env
+          touch .env.production
           echo REACT_APP_BASE_PATH =${{ secrets.REACT_APP_BASE_PATH }} >> .env
           echo REACT_APP_ITUNES_API =${{ secrets.REACT_APP_ITUNES_API }} >> .env
           echo REACT_APP_SENTRY_URL =${{ secrets.REACT_APP_SENTRY_URL }} >> .env
