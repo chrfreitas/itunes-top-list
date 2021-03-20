@@ -12,16 +12,16 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      
+
+      - name: install dependencies
+        run: npm install
+
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
           path: ~/node_modules
           key: node_modules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: node_modules-
-
-      - name: install dependencies
-        run: npm install
 
   test:
     name: test 🧪
