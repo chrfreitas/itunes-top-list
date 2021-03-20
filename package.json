@@ -2,6 +2,7 @@
   "name": "aulatunes-ldnfwq",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://chrfreitas.github.io/itunes-top-list",
   "dependencies": {
     "@sentry/react": "^6.2.2",
     "@sentry/tracing": "^6.2.2",
