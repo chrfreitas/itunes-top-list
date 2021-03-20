@@ -1,6 +1,7 @@
 # Getting Started
 
 This project is using [Create React App](https://github.com/facebook/create-react-app).
+Demo: https://chrfreitas.github.io/itunes-top-list/
 
 ## Available Scripts
 
