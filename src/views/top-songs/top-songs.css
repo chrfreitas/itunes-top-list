@@ -1,0 +1,33 @@
+.top-songs {
+    padding: 16px;
+}
+
+.top-songs__list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 24px;
+    
+}
+
+.top-songs__title {
+    margin: 0 0 16px 0;
+}
+
+.top-songs__cover {
+    margin: 0 0 8px 0;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.top-songs__name {
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+
+.top-songs__author {
+    font-size: 12px;
+}
+
