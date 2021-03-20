@@ -5,24 +5,6 @@ import { Router } from 'react-router-dom'
 import '@testing-library/jest-dom/extend-expect'
 
 import { App } from '../App'
-import routes from '../routes/routes'
-
-
-test('renders Top Album page as default', () => {
-    const history = createMemoryHistory()
-    render(
-        <Router history={history}>
-            <App />
-        </Router>
-    );
-
-    let route = routes.topAlbums;
-    if (process.env.NODE_ENV === 'production') {
-        route = process.env.REACT_APP_BASE_PATH + routes.topAlbums;
-    }
-
-    expect(location.pathname).toBe(route)
-});
 
 test('renders menu with two links to switch between Top Songs and Top Albums', () => {
     const history = createMemoryHistory()
