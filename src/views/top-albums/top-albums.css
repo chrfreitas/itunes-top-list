@@ -1,33 +1,32 @@
 .top-albums {
-    padding: 16px;
+  padding: 16px;
+  background-color: red;
 }
 
 .top-albums__list {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 24px;
-    
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 24px;
 }
 
 .top-albums__title {
-    margin: 0 0 16px 0;
+  margin: 0 0 16px 0;
 }
 
 .top-albums__cover {
-    margin: 0 0 8px 0;
-    width: 100%;
-    border-radius: 4px;
+  margin: 0 0 8px 0;
+  width: 100%;
+  border-radius: 4px;
 }
 
 .top-albums__name {
-    font-size: 18px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 180px;
+  font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
 }
 
 .top-albums__author {
-    font-size: 12px;
+  font-size: 12px;
 }
-
